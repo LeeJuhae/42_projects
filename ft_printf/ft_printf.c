@@ -34,10 +34,6 @@ int	print(t_info *info, va_list *ap)
 	return (ret);
 }
 
-printf("123%9d456");
-123
-%9d
-456
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	ap;
