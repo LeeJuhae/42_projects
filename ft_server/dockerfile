@@ -7,4 +7,14 @@ RUN apt-get install -y vim
 
 RUN apt-get install -y php-fpm
 
+RUN apt-get install -y mariadb-server php-mysql
+
+RUN apt-get install -y wget
+RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
+RUN tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz
+RUN mv phpMyAdmin-5.0.2-all-languages phpmyadmin
+RUN mv phpmyadmin /var/www/html/
+RUN cp -rp var/www/html/phpmyadmin/config.sample.inc.php var/www/html/phpmyadmin/config.inc.php
+
 COPY ./srcs/default etc/nginx/sites-available/default
+COPY ./srcs/config.inc.php var/www/html/phpmyadmin/config.inc.php
