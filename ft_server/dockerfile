@@ -18,3 +18,6 @@ RUN cp -rp var/www/html/phpmyadmin/config.sample.inc.php var/www/html/phpmyadmin
 
 COPY ./srcs/default etc/nginx/sites-available/default
 COPY ./srcs/config.inc.php var/www/html/phpmyadmin/config.inc.php
+
+COPY ./srcs/booting.sh /.
+COPY ./srcs/db_setup.sh /.
