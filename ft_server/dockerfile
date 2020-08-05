@@ -16,8 +16,15 @@ RUN mv phpMyAdmin-5.0.2-all-languages phpmyadmin
 RUN mv phpmyadmin /var/www/html/
 RUN cp -rp var/www/html/phpmyadmin/config.sample.inc.php var/www/html/phpmyadmin/config.inc.php
 
+RUN wget https://wordpress.org/latest.tar.gz
+RUN tar -xvf latest.tar.gz
+RUN mv wordpress/ var/www/html/
+RUN cp var/www/html/wordpress/wp-config-sample.php var/www/html/wordpress/wp-config.php
+RUN chown -R www-data:www-data /var/www/html/wordpress
+
 COPY ./srcs/default etc/nginx/sites-available/default
 COPY ./srcs/config.inc.php var/www/html/phpmyadmin/config.inc.php
+COPY ./srcs/wp-config.php var/www/html/wordpress/wp-config.php
 
 COPY ./srcs/booting.sh /.
 COPY ./srcs/db_setup.sh /.
