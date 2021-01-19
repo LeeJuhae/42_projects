@@ -15,7 +15,7 @@ data:
     # possible, but leave them commented.  Uncommented options override the
     # default value.
 
-    Port 2020
+    Port 22
     #AddressFamily any
     #ListenAddress 0.0.0.0
     #ListenAddress ::

@@ -1,4 +1,5 @@
 #!/bin/sh
+# export EXTERNAL_IP=$(/tmp/get_external_ip_addresses.sh nginx)
 
 ssh-keygen -A
 adduser --disabled-password juhlee

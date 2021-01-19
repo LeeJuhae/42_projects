@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.12
 
 COPY ./srcs/* /tmp/
 RUN chmod 777 -R /tmp/*
