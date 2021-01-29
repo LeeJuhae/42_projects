@@ -1,22 +1,28 @@
-FROM alpine:3.12
+FROM alpine:3.11
 
-RUN apk add --no-cache mysql mysql-client bash
+RUN apk add mysql mysql-client --no-cache
 
-COPY ./entry.sh /tmp/entry.sh
-RUN chmod +x /tmp/entry.sh
+RUN addgroup mysql mysql
+
+COPY ./my.cnf /etc/my.cnf
+COPY ./startup.sh /tmp/startup.sh
+COPY ./create_tables.sql /tmp
+RUN chmod +x /tmp/startup.sh
+
+VOLUME /var/lib/mysql
 
 EXPOSE 3306
 
-ENTRYPOINT ["/tmp/entry.sh"]
+RUN chown -R mysql:mysql /var/lib && \
+	mkdir /run/mysqld && \
+	chown mysql:mysql /run/mysqld
 
-# FROM alpine:latest
+# RUN :> createdatabase && \
+# 	echo "CREATE DATABASE IF NOT EXISTS $DB_NAME;" >> createdatabase && \
+# 	echo "CREATE USER '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS';" >> createdatabase && \
+# 	echo "GRANT ALL ON *.* TO '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS' WITH GRANT OPTION;" >> createdatabase && \
+# 	echo "FLUSH PRIVILEGES;" >> createdatabase
 
-# COPY ./srcs/* /tmp/
-# RUN chmod 777 -R /tmp/*
-
-# RUN apk update && apk add openrc mysql mysql-client
-# # RUN apk update && apk add --no-cache openrc mysql mysql-client
-
-# EXPOSE 3306
-
-# ENTRYPOINT ["/tmp/entry.sh"]
+# CMD  mysql_install_db --user=mysql --datadir=/var/lib/mysql && \
+# 	 /usr/bin/mysqld --user=mysql --init_file=/createdatabase
+ENTRYPOINT ["/bin/sh", "/tmp/startup.sh"]

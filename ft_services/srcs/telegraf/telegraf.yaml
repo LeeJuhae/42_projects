@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegraf
+  labels:
+    app: telegraf
+spec:
+  selector:
+    matchLabels:
+      app: telegraf
+  template:
+    metadata:
+      labels:
+        app: telegraf
+    spec:
+      serviceAccount: user
+      containers:
+      - name: telegraf
+        image: telegraf
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8125
