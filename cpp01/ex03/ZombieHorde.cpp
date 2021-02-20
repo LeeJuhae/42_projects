@@ -6,7 +6,7 @@
 /*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 17:50:07 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/02 18:31:40 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/02/20 13:33:29 by ijuhae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ZombieHorde::ZombieHorde(int N)
 	this->cnt = N;
 
 	this->zombies = new Zombie[this->cnt];
-	srand(time(NULL));
+
 	for (int i = 0 ; i < this->cnt ; i++)
 	{
 		idx = rand() % 5;
