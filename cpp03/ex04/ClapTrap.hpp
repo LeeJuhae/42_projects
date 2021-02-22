@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/08 17:36:44 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/21 17:39:16 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/21 16:29:41 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/22 21:45:31 by ijuhae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 # include <iostream>
 
-class ScavTrap
+class ClapTrap
 {
 	public:
-		ScavTrap();
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap &copy);
-		ScavTrap &operator=(const ScavTrap&op);
-		~ScavTrap();
-		void rangedAttack(std::string const &target);
-		void meleeAttack(std::string const &target);
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &);
+		virtual ~ClapTrap();
+		ClapTrap &operator=(const ClapTrap &);
+
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		void challengeNewcomer();
 
-	private:
+		std::string &getName(void);
+
+	protected:
 		unsigned int hit_points;
 		unsigned int max_hit_points;
 		unsigned int energy_points;
@@ -39,6 +38,9 @@ class ScavTrap
 		unsigned int melee_attack_damage;
 		unsigned int ranged_attack_damage;
 		unsigned int armor_damage_reduction;
+
+		void copy(ClapTrap const &copy);
+
 };
 
 #endif

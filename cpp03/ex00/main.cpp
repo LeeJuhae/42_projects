@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 12:07:24 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/08 17:34:11 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/02/21 15:57:02 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int main(void)
 {
+	srand(time(NULL));
+
 	FragTrap a("Apple");
 	FragTrap b("Banana");
 
@@ -33,5 +35,6 @@ int main(void)
 	a.takeDamage(b.vaulthunter_dot_exe("Apple"));
 	a.beRepaired(11);
 	b.beRepaired(42);
+	b.beRepaired(100);
 	return (0);
 }
