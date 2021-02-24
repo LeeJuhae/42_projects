@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*   Squad.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 23:20:13 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/24 15:37:47 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/23 21:28:32 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/23 22:33:09 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VICTIM_HPP
-# define VICTIM_HPP
+#ifndef SQUAD_HPP
+# define SQUAD_HPP
 
-# include <iostream>
+# include "./ISquad.hpp"
 
-class Victim
+class Squad: public ISquad
 {
-	protected:
-		std::string name;
+	private:
+		int count;
+		ISpaceMarine **units;
 
 	public:
-		Victim(std::string name);
-		Victim(const Victim &copy);
-		Victim &operator=(const Victim &op);
-		virtual ~Victim();
+		Squad();
+		Squad(const Squad &copy);
+		Squad &operator=(const Squad &op);
+		virtual ~Squad();
 
-		const std::string &getName() const;
-		void setName(std::string);
+		int getCount(void) const;
+		ISpaceMarine* getUnit(int idx) const;
 
-		virtual void getPolymorphed() const;
+		int push(ISpaceMarine *unit);
 };
-
-std::ostream &operator<<(std::ostream &out, const Victim &victim);
 
 #endif

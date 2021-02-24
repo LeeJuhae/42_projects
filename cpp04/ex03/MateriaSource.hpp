@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 23:20:13 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/24 15:37:47 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/24 15:20:09 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/24 15:20:31 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VICTIM_HPP
-# define VICTIM_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-# include <iostream>
+# include "./IMateriaSource.hpp"
 
-class Victim
+class MateriaSource: public IMateriaSource
 {
-	protected:
-		std::string name;
+	private:
+		int amount;
+		AMateria *sources[4];
 
 	public:
-		Victim(std::string name);
-		Victim(const Victim &copy);
-		Victim &operator=(const Victim &op);
-		virtual ~Victim();
+		MateriaSource();
+		MateriaSource(MateriaSource const &copy);
+		virtual ~MateriaSource();
 
-		const std::string &getName() const;
-		void setName(std::string);
+		MateriaSource &operator=(MateriaSource const &op);
 
-		virtual void getPolymorphed() const;
+		void learnMateria(AMateria *m);
+		AMateria* createMateria(std::string const &type);
 };
-
-std::ostream &operator<<(std::ostream &out, const Victim &victim);
 
 #endif

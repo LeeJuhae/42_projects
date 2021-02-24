@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlasmaRifle.cpp                                    :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 17:27:13 by juhlee            #+#    #+#             */
-/*   Updated: 2021/02/23 20:04:03 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/24 15:15:08 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/24 15:24:52 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./PlasmaRifle.hpp"
+#include "./Ice.hpp"
 
-PlasmaRifle::PlasmaRifle():
-	AWeapon("Plasma Rifle", 5, 21)
-{}
+Ice::Ice():
+	AMateria("ice") {}
 
-PlasmaRifle::PlasmaRifle(const PlasmaRifle &copy):
-	AWeapon(copy)
+Ice::Ice(Ice const &copy):
+	AMateria("ice")
 {
+	this->_xp = copy._xp;
 }
 
-PlasmaRifle &PlasmaRifle::operator=(const PlasmaRifle &op)
+Ice::~Ice() {}
+
+Ice &Ice::operator=(Ice const &op)
 {
-	this->name = op.name;
-	this->apCost = op.apCost;
-	this->damage = op.damage;
+	this->_xp = op._xp;
 	return (*this);
 }
 
-PlasmaRifle::~PlasmaRifle() {}
-
-void PlasmaRifle::attack(void) const
+AMateria *Ice::clone(void) const
 {
-	std::cout << "* piouuu piouuu piouuu *" << std::endl;
+	Ice *copy = new Ice(*this);
+	return (copy);
+}
+
+void Ice::use(ICharacter &target)
+{
+	AMateria::use(target);
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

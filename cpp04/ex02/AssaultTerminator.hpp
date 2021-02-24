@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*   AssaultTerminator.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 23:20:13 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/24 15:37:47 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/23 21:59:37 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/23 22:30:41 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VICTIM_HPP
-# define VICTIM_HPP
+#ifndef ASSAULTTERMINATOR_HPP
+# define ASSAULTTERMINATOR_HPP
 
 # include <iostream>
+# include "./ISpaceMarine.hpp"
 
-class Victim
+class AssaultTerminator: public ISpaceMarine
 {
-	protected:
-		std::string name;
-
 	public:
-		Victim(std::string name);
-		Victim(const Victim &copy);
-		Victim &operator=(const Victim &op);
-		virtual ~Victim();
+		AssaultTerminator();
+		AssaultTerminator(const AssaultTerminator &copy);
+		AssaultTerminator &operator=(const AssaultTerminator &op);
+		virtual ~AssaultTerminator();
 
-		const std::string &getName() const;
-		void setName(std::string);
-
-		virtual void getPolymorphed() const;
+		ISpaceMarine* clone(void) const;
+		void battleCry(void) const;
+		void rangedAttack(void) const;
+		void meleeAttack(void) const;
 };
-
-std::ostream &operator<<(std::ostream &out, const Victim &victim);
 
 #endif

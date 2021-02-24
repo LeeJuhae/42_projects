@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   AWeapon.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 01:13:35 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/23 01:23:06 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/02/23 21:03:37 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./AWeapon.hpp"
 
 AWeapon::AWeapon():
-	name(std::string()), apcost(0), damage(0)
+	name(std::string()), apCost(0), damage(0)
 {
 }
 
-AWeapon::AWeapon(std::string const & name, int apcost, int damage):
-	name(name), apcost(apcost), damage(damage)
+AWeapon::AWeapon(std::string const & name, int apCost, int damage):
+	name(name), apCost(apCost), damage(damage)
 {
 }
 
 AWeapon::AWeapon(const AWeapon &copy):
-	name(copy.name), apcost(copy.apcost), damage(copy.damage)
+	name(copy.name), apCost(copy.apCost), damage(copy.damage)
 {
 }
 
 AWeapon &AWeapon::operator=(const AWeapon &op)
 {
 	this->name = op.name;
-	this->apcost = op.apcost;
+	this->apCost = op.apCost;
 	this->damage = op.damage;
 	return (*this);
 }
@@ -46,7 +46,7 @@ std::string const &AWeapon::getName() const
 
 int AWeapon::getAPCost() const
 {
-	return (this->apcost);
+	return (this->apCost);
 }
 
 int AWeapon::getDamage() const

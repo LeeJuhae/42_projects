@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 23:20:13 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/24 15:37:47 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/24 15:15:51 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/24 15:16:08 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VICTIM_HPP
-# define VICTIM_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-# include <iostream>
+# include "./AMateria.hpp"
 
-class Victim
+class Ice: public AMateria
 {
-	protected:
-		std::string name;
-
 	public:
-		Victim(std::string name);
-		Victim(const Victim &copy);
-		Victim &operator=(const Victim &op);
-		virtual ~Victim();
+		Ice();
+		Ice(Ice const &copy);
+		virtual ~Ice();
 
-		const std::string &getName() const;
-		void setName(std::string);
+		Ice &operator=(Ice const &op);
 
-		virtual void getPolymorphed() const;
+		AMateria *clone(void) const;
+		void use(ICharacter &target);
 };
-
-std::ostream &operator<<(std::ostream &out, const Victim &victim);
 
 #endif

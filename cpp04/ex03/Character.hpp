@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 23:20:13 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/24 15:37:47 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/24 15:12:16 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/24 15:13:04 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VICTIM_HPP
-# define VICTIM_HPP
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
-# include <iostream>
+# include "./ICharacter.hpp"
 
-class Victim
+class Character: public ICharacter
 {
-	protected:
+	private:
 		std::string name;
+		int equipped;
+		AMateria *inventory[4];
 
 	public:
-		Victim(std::string name);
-		Victim(const Victim &copy);
-		Victim &operator=(const Victim &op);
-		virtual ~Victim();
+		Character(std::string const &name);
+		Character(Character const &copy);
+		virtual ~Character();
 
-		const std::string &getName() const;
-		void setName(std::string);
+		Character &operator=(Character const &op);
 
-		virtual void getPolymorphed() const;
+		std::string const &getName(void) const;
+
+		void equip(AMateria *m);
+		void unequip(int idx);
+		void use(int idx, ICharacter &target);
 };
-
-std::ostream &operator<<(std::ostream &out, const Victim &victim);
 
 #endif

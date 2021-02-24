@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Sorcerer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 22:23:31 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/22 23:32:28 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/02/24 15:39:12 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 
 class Sorcerer
 {
+	private:
+		std::string name;
+		std::string title;
+		Sorcerer();
+
 	public:
 		Sorcerer(std::string name, std::string title);
 		Sorcerer(const Sorcerer &copy);
@@ -30,10 +35,6 @@ class Sorcerer
 		void setTitle(const std::string &title);
 
 		void polymorph(Victim const &) const;
-
-	private:
-		std::string name;
-		std::string title;
 };
 
 std::ostream &operator<<(std::ostream &out, const Sorcerer &sorcerer);

@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 23:20:13 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/24 15:37:47 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/24 15:08:55 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/24 15:33:09 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VICTIM_HPP
-# define VICTIM_HPP
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
 # include <iostream>
+class ICharacter;
+# include "./ICharacter.hpp"
 
-class Victim
+class AMateria
 {
 	protected:
-		std::string name;
+		std::string _type;
+		unsigned int _xp;
 
 	public:
-		Victim(std::string name);
-		Victim(const Victim &copy);
-		Victim &operator=(const Victim &op);
-		virtual ~Victim();
+		AMateria(std::string const &type);
+		virtual ~AMateria();
 
-		const std::string &getName() const;
-		void setName(std::string);
+		std::string const &getType(void) const;
+		unsigned int getXP(void) const;
 
-		virtual void getPolymorphed() const;
+		virtual AMateria *clone(void) const = 0;
+		virtual void use(ICharacter &target);
 };
-
-std::ostream &operator<<(std::ostream &out, const Victim &victim);
 
 #endif

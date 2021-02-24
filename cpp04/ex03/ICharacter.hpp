@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 23:20:13 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/24 15:37:47 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/24 15:16:45 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/24 15:33:20 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VICTIM_HPP
-# define VICTIM_HPP
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
+class AMateria;
+# include "./AMateria.hpp"
 # include <iostream>
 
-class Victim
+class ICharacter
 {
-	protected:
-		std::string name;
-
 	public:
-		Victim(std::string name);
-		Victim(const Victim &copy);
-		Victim &operator=(const Victim &op);
-		virtual ~Victim();
-
-		const std::string &getName() const;
-		void setName(std::string);
-
-		virtual void getPolymorphed() const;
+		virtual ~ICharacter() {}
+		virtual std::string const &getName(void) const = 0;
+		virtual void equip(AMateria *m) = 0;
+		virtual void unequip(int idx) = 0;
+		virtual void use(int idx, ICharacter &target) = 0;
 };
-
-std::ostream &operator<<(std::ostream &out, const Victim &victim);
 
 #endif

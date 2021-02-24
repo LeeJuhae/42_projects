@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RadScorpion.hpp                                    :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 20:25:23 by juhlee            #+#    #+#             */
-/*   Updated: 2021/02/23 20:58:59 by juhlee           ###   ########.fr       */
+/*   Created: 2021/02/24 15:08:29 by juhlee            #+#    #+#             */
+/*   Updated: 2021/02/24 15:22:05 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RADSCORPION_HPP
-# define RADSCORPION_HPP
+#include "./AMateria.hpp"
 
-#include "./Enemy.hpp"
-#include <iostream>
+AMateria::AMateria(std::string const &type):
+	_type(type), _xp(0)  {}
 
-class RadScorpion: public Enemy
+AMateria::~AMateria() {}
+
+std::string const &AMateria::getType(void) const
 {
-	public:
-		RadScorpion();
-		RadScorpion(const RadScorpion &copy);
-		RadScorpion &operator=(const RadScorpion &op);
-		virtual ~RadScorpion();
-};
+	return (this->_type);
+}
 
-#endif
+unsigned int AMateria::getXP(void) const
+{
+	return (this->_xp);
+}
+
+void AMateria::use(ICharacter &target)
+{
+	(void)target;
+	this->_xp += 10;
+}
