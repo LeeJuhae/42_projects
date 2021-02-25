@@ -6,7 +6,7 @@
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:05:37 by juhlee            #+#    #+#             */
-/*   Updated: 2021/02/25 09:18:50 by juhlee           ###   ########.fr       */
+/*   Updated: 2021/02/25 14:24:51 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ class Form
 		class GradeTooLowException: public std::exception {
 			virtual const char* what() const throw();
 		};
+		class UnsignedFormException: public std::exception {
+			virtual const char* what() const throw();
+		};
 
 		void beSigned(const Bureaucrat &bureaucrat);
 
@@ -44,6 +47,8 @@ class Form
 		bool getIsSigned(void) const;
 		int getSignGrade(void) const;
 		int getExecuteGrade(void) const;
+
+		virtual void execute(Bureaucrat const &bureaucrat) const = 0;
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &form);

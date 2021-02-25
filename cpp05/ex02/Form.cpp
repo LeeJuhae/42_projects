@@ -6,7 +6,7 @@
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 21:41:37 by juhlee            #+#    #+#             */
-/*   Updated: 2021/02/25 10:17:50 by juhlee           ###   ########.fr       */
+/*   Updated: 2021/02/25 15:00:20 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ const char *Form::GradeTooLowException::what() const throw()
 	return ("Form Exception: Grade Too Low");
 }
 
+const char* Form::UnsignedFormException::what() const throw()
+{
+	return "FormException: Unsigned form can not be executed";
+}
+
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->signGrade)
@@ -75,9 +80,17 @@ int Form::getExecuteGrade(void) const
 	return (this->executeGrade);
 }
 
+void Form::execute(Bureaucrat const & executor) const
+{
+	if (executor.getGrade() > 150)
+		throw Form::GradeTooLowException();
+	if (!(this->getIsSigned()))
+		throw Form::UnsignedFormException();
+}
+
 std::ostream &operator<<(std::ostream &out, const Form &form)
 {
-	out << form.getName() << " => isSigned: " << (form.getIsSigned() ? "Signed" : "Unsigned") << ", sign grade: " << form.getSignGrade()
-	<< ", execute Grade: " << form.getExecuteGrade();
+	out << "[" << form.getName() << " => isSigned: " << (form.getIsSigned() ? "Signed" : "Unsigned") << ", sign grade: " << form.getSignGrade()
+	<< ", execute Grade: " << form.getExecuteGrade() << "]";
 	return (out);
 }

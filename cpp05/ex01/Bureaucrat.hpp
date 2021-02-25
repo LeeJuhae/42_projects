@@ -6,7 +6,7 @@
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 16:52:31 by juhlee            #+#    #+#             */
-/*   Updated: 2021/02/24 21:35:47 by juhlee           ###   ########.fr       */
+/*   Updated: 2021/02/25 10:04:37 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Bureaucrat
 
 		void incrementGrade(void);
 		void decrementGrade(void);
-		void signForm(Form const &form) const;
+		void signForm(Form &form) const;
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &b);
