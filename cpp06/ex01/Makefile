@@ -6,13 +6,13 @@
 #    By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/26 21:09:22 by juhlee            #+#    #+#              #
-#    Updated: 2021/02/28 10:36:12 by ijuhae           ###   ########.fr        #
+#    Updated: 2021/02/28 10:40:41 by ijuhae           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = seri
+NAME = datastruct
 
-SRCS =
+SRCS = main.cpp DataStruct.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = clang++
 FLAGS = -std=c++98 -Wall -Werror -Wextra
