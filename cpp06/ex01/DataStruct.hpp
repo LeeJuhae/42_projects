@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DataStruct.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/27 23:25:07 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/28 10:37:53 by ijuhae           ###   ########.fr       */
+/*   Created: 2021/02/27 23:25:04 by ijuhae            #+#    #+#             */
+/*   Updated: 2021/02/27 23:25:05 by ijuhae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./DataStruct.hpp"
+#ifndef DATASTRUCT_HPP
+# define DATASTRUCT_HPP
 
-int main()
+# include <iostream>
+# include <time.h>
+
+# define size_string sizeof(std::string)
+# define size_int sizeof(int)
+
+struct Data
 {
-	void *raw;
-	Data *data;
+	std::string s1;
+	int n;
+	std::string s2;
+};
 
-	raw = serialize();
-	data = deserialize(raw);
+Data * deserialize(void * raw);
+void * serialize(void);
 
-	std::cout << "data->s1: " << data->s1 << " (24 bytes)" << std::endl;
-	std::cout << "data->n:  " << data->n << " (4 bytes)" << std::endl;
-	std::cout << "data->s2: " << data->s2 << " (24 bytes)" <<  std::endl;
-
-	return (0);
-}
+#endif

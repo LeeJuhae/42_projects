@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/26 21:09:22 by juhlee            #+#    #+#              #
-#    Updated: 2021/02/28 10:36:12 by ijuhae           ###   ########.fr        #
+#    Created: 2021/02/27 23:12:48 by ijuhae            #+#    #+#              #
+#    Updated: 2021/02/28 10:11:19 by ijuhae           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = seri
+NAME = identify
 
-SRCS =
+SRCS = main.cpp Identify.cpp A.cpp B.cpp C.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = clang++
 FLAGS = -std=c++98 -Wall -Werror -Wextra
@@ -31,4 +31,4 @@ fclean:clean
 re: fclean all
 
 test: $(NAME)
-	./datastruct
+	./identify

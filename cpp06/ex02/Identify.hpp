@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Identify.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/27 23:25:07 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/28 10:37:53 by ijuhae           ###   ########.fr       */
+/*   Created: 2021/02/27 23:56:44 by ijuhae            #+#    #+#             */
+/*   Updated: 2021/02/28 10:01:42 by ijuhae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./DataStruct.hpp"
+#ifndef IDENTIFY_HPP
+# define IDENTIFY_HPP
 
-int main()
-{
-	void *raw;
-	Data *data;
+# include <time.h>
+# include "./Base.hpp"
+# include "./A.hpp"
+# include "./B.hpp"
+# include "./C.hpp"
 
-	raw = serialize();
-	data = deserialize(raw);
+Base * generate(void);
+void identify_from_pointer(Base * p);
+void identify_from_reference( Base & p);
 
-	std::cout << "data->s1: " << data->s1 << " (24 bytes)" << std::endl;
-	std::cout << "data->n:  " << data->n << " (4 bytes)" << std::endl;
-	std::cout << "data->s2: " << data->s2 << " (24 bytes)" <<  std::endl;
-
-	return (0);
-}
+#endif

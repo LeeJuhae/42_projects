@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/27 23:25:07 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/02/28 10:37:53 by ijuhae           ###   ########.fr       */
+/*   Created: 2021/02/27 23:26:21 by ijuhae            #+#    #+#             */
+/*   Updated: 2021/02/27 23:26:23 by ijuhae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./DataStruct.hpp"
+#ifndef A_HPP
+# define A_HPP
 
-int main()
+# include "./Base.hpp"
+
+class A: public Base
 {
-	void *raw;
-	Data *data;
+	public:
+		A();
+		A(const A &copy);
+		A &operator=(const A &op);
+		virtual ~A();
+};
 
-	raw = serialize();
-	data = deserialize(raw);
-
-	std::cout << "data->s1: " << data->s1 << " (24 bytes)" << std::endl;
-	std::cout << "data->n:  " << data->n << " (4 bytes)" << std::endl;
-	std::cout << "data->s2: " << data->s2 << " (24 bytes)" <<  std::endl;
-
-	return (0);
-}
+#endif
