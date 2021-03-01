@@ -17,6 +17,8 @@ class Span
 		Span &operator=(Span const &op);
 
 		void addNumber(int num);
+		void addNumber(unsigned int start, unsigned int end, int num);
+
 		unsigned int shortestSpan(void);
 		unsigned int longestSpan(void);
 
@@ -28,6 +30,11 @@ class Span
 		};
 
 		class ContainerFullException: public std::exception
+		{
+			virtual const char *what() const throw();
+		};
+
+		class RangeException: public std::exception
 		{
 			virtual const char *what() const throw();
 		};
