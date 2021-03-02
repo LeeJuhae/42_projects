@@ -35,7 +35,7 @@ void Span::addNumber(unsigned int start, unsigned int end, int num)
 	if ((start >= end) || (end >= this->N))
 		throw RangeException();
 	if (end > this->v.size())
-		this->v.resize(end);
+		this->v.resize(end + 1);
 	std::vector<int>::iterator it = this->v.begin() + start;
 	std::fill(it, it + (end - start) + 1, num);
 }
