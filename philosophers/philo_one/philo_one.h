@@ -6,7 +6,7 @@
 /*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:08:53 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/03/18 13:32:04 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/03/22 16:37:04 by ijuhae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 
 # define TAKEN_FORK	0
-# define EATING	1
+# define EATING		1
 # define SLEEPING	2
 # define THINKING	3
 # define DEAD		4

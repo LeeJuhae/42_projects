@@ -6,7 +6,7 @@
 /*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:08:19 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/03/22 15:57:09 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/03/22 16:42:47 by ijuhae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,21 @@ void init_philos(void)
 	}
 }
 
+void	clean_table(void)
+{
+	int	i;
+
+	i = 0;
+	while (i < g_table.num_of_philos)
+	{
+		pthread_mutex_destroy(&g_table.fork[i]);
+		++i;
+	}
+	pthread_mutex_destroy(&g_table.m_msg);
+	free(g_table.fork);
+	free(g_philos);
+}
+
 int		main(int argc, char **argv)
 {
 	if (!(argc == 5 || argc == 6) || check_arg(argc, argv))
@@ -75,5 +90,6 @@ int		main(int argc, char **argv)
 		return (printf("Error: malloc forks"));
 	init_table();
 	init_philos();
+	clean_table();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 12:18:00 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/03/18 13:39:06 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/03/22 17:07:46 by ijuhae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		eat(t_philo *philo)
 	pthread_mutex_lock(&g_table.fork[philo->r_fork]);
 	msg(philo, TAKEN_FORK, get_time());
 	msg(philo, EATING, get_time());
-	less_err_sleep(1);
+	less_err_sleep(g_table.time_to_eat);
 	pthread_mutex_unlock(&g_table.fork[philo->l_fork]);
 	pthread_mutex_unlock(&g_table.fork[philo->r_fork]);
 	philo->num_of_eat++;
@@ -96,7 +96,7 @@ void	*philo_act(void *phi)
 			break ;
 		if (msg(philo, SLEEPING, get_time()))
 			break ;
-		less_err_sleep(1);
+		less_err_sleep(g_table.time_to_sleep);
 		if (msg(philo, THINKING, get_time()))
 			break ;
 	}
