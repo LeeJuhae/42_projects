@@ -6,7 +6,7 @@
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 17:32:30 by juhlee            #+#    #+#             */
-/*   Updated: 2021/03/23 20:19:44 by juhlee           ###   ########.fr       */
+/*   Updated: 2021/03/23 21:10:01 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int		msg(t_philo *philo, int msg, unsigned long cur)
 	else if (msg == DEAD)
 	{
 		printf(" died\n");
-		// g_table.dead = 1;
 		return (1);
 	}
 	sem_post(g_table.m_msg);
@@ -44,8 +43,8 @@ int		msg(t_philo *philo, int msg, unsigned long cur)
 
 void	*philo_monitor(void *phi)
 {
-	t_philo *philo;
-	unsigned long cur;
+	t_philo			*philo;
+	unsigned long	cur;
 
 	philo = (t_philo *)phi;
 	while (1)
@@ -56,7 +55,6 @@ void	*philo_monitor(void *phi)
 		if (g_table.time_to_die < cur - philo->last_eat)
 		{
 			msg(philo, DEAD, cur);
-			// return (NULL);
 			exit(1);
 		}
 		less_err_sleep(1);

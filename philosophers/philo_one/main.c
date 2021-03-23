@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:08:19 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/03/22 16:42:47 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/03/23 21:04:56 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		check_arg(int argc, char **argv)
 {
-	if ((g_table.num_of_philos = ft_atoi(argv[1])) <= 1 ||
+	if ((g_table.num_of_philo = ft_atoi(argv[1])) <= 1 ||
 		(g_table.time_to_die = ft_atoi(argv[2])) <= 0 ||
 		(g_table.time_to_eat = ft_atoi(argv[3])) <= 0 ||
 		(g_table.time_to_sleep = ft_atoi(argv[4])) <= 0)
@@ -31,12 +31,12 @@ void	init_table(void)
 	int	i;
 
 	i = 0;
-	while (i < g_table.num_of_philos)
+	while (i < g_table.num_of_philo)
 	{
 		pthread_mutex_init(&g_table.fork[i], NULL);
 		g_philos[i].idx = i;
 		g_philos[i].l_fork = i;
-		g_philos[i].r_fork = (i + 1) % g_table.num_of_philos;
+		g_philos[i].r_fork = (i + 1) % g_table.num_of_philo;
 		g_philos[i].num_of_eat = 0;
 		++i;
 	}
@@ -46,19 +46,19 @@ void	init_table(void)
 	g_table.dead = 0;
 }
 
-void init_philos(void)
+void	init_philos(void)
 {
 	int	i;
 
 	i = 0;
-	while (i < g_table.num_of_philos)
+	while (i < g_table.num_of_philo)
 	{
 		g_philos[i].last_eat = get_time();
 		pthread_create(&g_philos[i].tid, NULL, philo_act, &g_philos[i]);
 		++i;
 	}
 	i = 0;
-	while (i < g_table.num_of_philos)
+	while (i < g_table.num_of_philo)
 	{
 		pthread_join(g_philos[i].tid, NULL);
 		++i;
@@ -70,7 +70,7 @@ void	clean_table(void)
 	int	i;
 
 	i = 0;
-	while (i < g_table.num_of_philos)
+	while (i < g_table.num_of_philo)
 	{
 		pthread_mutex_destroy(&g_table.fork[i]);
 		++i;
@@ -84,9 +84,10 @@ int		main(int argc, char **argv)
 {
 	if (!(argc == 5 || argc == 6) || check_arg(argc, argv))
 		return (printf("Error: arguments"));
-	if (!(g_philos = (t_philo *)malloc(sizeof(t_philo) * g_table.num_of_philos)))
+	if (!(g_philos = (t_philo *)malloc(sizeof(t_philo) * g_table.num_of_philo)))
 		return (printf("Error: malloc philos"));
-	if (!(g_table.fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * g_table.num_of_philos)))
+	if (!(g_table.fork =
+	(pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * g_table.num_of_philo)))
 		return (printf("Error: malloc forks"));
 	init_table();
 	init_philos();

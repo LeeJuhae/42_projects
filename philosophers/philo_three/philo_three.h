@@ -6,7 +6,7 @@
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 17:26:05 by juhlee            #+#    #+#             */
-/*   Updated: 2021/03/23 20:48:31 by juhlee           ###   ########.fr       */
+/*   Updated: 2021/03/23 21:07:37 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 typedef struct		s_table
 {
-	int				num_of_philos;
+	int				num_of_philo;
 	unsigned long	time_to_die;
 	unsigned long	time_to_eat;
 	unsigned long	time_to_sleep;
@@ -62,4 +62,4 @@ void				less_err_sleep(unsigned long input);
 void				*philo_act(void *phi);
 void				process_monitor(void);
 
-# endif
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_two.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 16:35:21 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/03/22 17:15:38 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/03/23 21:07:52 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int		msg(t_philo *philo, int msg, unsigned long cur)
 
 void	*philo_monitor(void *phi)
 {
-	t_philo *philo;
-	unsigned long cur;
+	t_philo			*philo;
+	unsigned long	cur;
 
 	philo = (t_philo *)phi;
 	while (1)
