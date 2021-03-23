@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijuhae <ijuhae@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 16:33:32 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/03/22 16:47:33 by ijuhae           ###   ########.fr       */
+/*   Updated: 2021/03/23 17:32:02 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_table(void)
 					g_table.num_of_philos / 2);
 	g_table.m_msg = sem_open("/m_msg", O_CREAT | O_EXCL, 0777, 1);
 	sem_unlink("/enter");
-	sem_unlink("m_msg");
+	sem_unlink("/m_msg");
 }
 
 void init_philos(void)
