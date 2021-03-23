@@ -6,7 +6,7 @@
 /*   By: juhlee <juhlee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 16:33:32 by ijuhae            #+#    #+#             */
-/*   Updated: 2021/03/23 21:08:09 by juhlee           ###   ########.fr       */
+/*   Updated: 2021/03/23 21:29:00 by juhlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	init_table(void)
 	g_table.base_time = get_time();
 	g_table.eat = 0;
 	g_table.dead = 0;
-	g_table.enter = sem_open("/enter", O_CREAT | O_EXCL, 0777,
+	g_table.enter = sem_open("/enter", O_CREAT | O_EXCL, 0644,
 					g_table.num_of_philo / 2);
-	g_table.m_msg = sem_open("/m_msg", O_CREAT | O_EXCL, 0777, 1);
+	g_table.m_msg = sem_open("/m_msg", O_CREAT | O_EXCL, 0644, 1);
 	sem_unlink("/enter");
 	sem_unlink("/m_msg");
 }
